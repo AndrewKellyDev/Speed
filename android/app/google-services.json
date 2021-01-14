@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "575758542535",
+    "project_id": "speed-f9a98",
+    "storage_bucket": "speed-f9a98.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575758542535:android:83b32982280e6d17cd40e2",
+        "android_client_info": {
+          "package_name": "com.example.speed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575758542535-s37sqoc5o6dg3b5emsp1nj3jvrkctntt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.speed",
+            "certificate_hash": "b1bd4e60337e2b3bb2288935697bc9e209976f41"
+          }
+        },
+        {
+          "client_id": "575758542535-pne4me7sr3r2l1ud0dqa47fem0nqmmc0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDShxAdldCTXmxqwET9EsKWbz3BPWZTbyk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575758542535-pne4me7sr3r2l1ud0dqa47fem0nqmmc0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

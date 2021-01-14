@@ -31,6 +31,10 @@ dependencies:
   flutter_tindercard: ^0.2.0
   flutter_custom_clippers: ^1.1.2
   flutter_svg: ^0.19.2+1
+  firebase_auth: ^0.20.0+1
+  firebase_core: ^0.7.0
+  google_sign_in: ^4.5.9
+  cloud_firestore: ^0.16.0
 
 dev_dependencies:
   flutter_test:

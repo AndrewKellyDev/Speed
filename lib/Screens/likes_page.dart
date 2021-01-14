@@ -16,7 +16,6 @@ class _LikesPageState extends State<LikesPage> {
       body: getBody(),
     );
   }
-
   Widget getBody() {
     var size = MediaQuery.of(context).size;
     return ListView(
