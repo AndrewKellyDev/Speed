@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:speed/Data/data.dart';
 import 'package:speed/Theme/colors.dart';
+import 'package:speed/app/filter_cubit/filter_cubit.dart';
 
 class ChatPage extends StatefulWidget {
   @override
@@ -10,9 +13,13 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: white,
-      body: getBody(),
+    return BlocProvider(
+      create: (context) =>
+          FilterCubit()..initState(FirebaseAuth.instance.currentUser),
+      child: Scaffold(
+        backgroundColor: white,
+        body: getBody(),
+      ),
     );
   }
 
@@ -58,18 +65,25 @@ class _ChatPageState extends State<ChatPage> {
             decoration: BoxDecoration(
                 color: grey.withOpacity(0.2),
                 borderRadius: BorderRadius.circular(5)),
-            child: TextField(
-              cursorColor: black.withOpacity(0.5),
-              decoration: InputDecoration(
-                  border: InputBorder.none,
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: black.withOpacity(0.5),
-                  ),
-                  hintText: "Search 0 Matches"),
-            ),
+            child: BlocBuilder<FilterCubit, FilterState>(
+                		builder: (context, _) => TextField(
+                              onChanged: (value) {
+                                context.read<FilterCubit>().initSearch(value);
+                              },
+                              cursorColor: black.withOpacity(0.5),
+                              decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  prefixIcon: Icon(
+                                    Icons.search,
+                                    color: black.withOpacity(0.5),
+                                  ),
+                                    hintText: "Search 0 Matches"),
+                            	),
+                	    ),
           ),
         ),
+        // TODO: Implement a proper widget for this
+        const SearchFilterWidget(),
         Divider(
           thickness: 0.8,
         ),
@@ -272,6 +286,40 @@ class _ChatPageState extends State<ChatPage> {
           ],
         )
       ],
+    );
+  }
+}
+
+class SearchFilterWidget extends StatelessWidget {
+  const SearchFilterWidget({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<FilterCubit, FilterState>(
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.only(left: 8, top: 0, right: 8),
+          child: Container(
+            height: 200,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: state.matches?.iter
+                  ?.map(
+                    (e) => Flexible(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text("Name: ${e.name}"),
+                          Text("Age: ${e.age}")
+                        ],
+                      ),
+                    ),
+                  )
+                  ?.toList(),
+            ),
+          ),
+        );
+      },
     );
   }
 }

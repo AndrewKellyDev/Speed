@@ -27,7 +27,8 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
+    ndkVersion '21.3.6528147'
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -47,6 +48,15 @@ android {
         versionName flutterVersionName
     }
 
+    signingConfigs {
+        debug {
+            storeFile rootProject.file('app\\keystores\\debug.jks')
+            storePassword "android"
+            keyAlias "debug"
+            keyPassword "android"
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
@@ -61,5 +71,6 @@ flutter {
 }
 
 dependencies {
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
