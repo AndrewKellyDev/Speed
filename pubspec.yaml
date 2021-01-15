@@ -1,7 +1,7 @@
 name: speed
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
@@ -19,17 +19,32 @@ dependencies:
   firebase_core: ^0.7.0
   google_sign_in: ^4.5.9
   cloud_firestore: ^0.16.0
+  # Flutter BloC for state management
+  flutter_bloc: ^6.1.1
+  # Functional Programming
+  dartz: ^0.9.2
+  # For regular Unions
+  freezed_annotation: ^0.12.0
+  # A port of Kotlin's Kotlin Standard library for Dart/Flutter projects.
+  kt_dart: ^0.8.0
+  # Defines the annotations used by json_serializable
+  # to create code for JSON serialization and deserialization.
+  json_annotation: ^3.1.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # Code Generators
+  build_runner: ^1.10.11
+  freezed: ^0.12.6
+  json_serializable: ^3.5.1
+  json_serializable_generator: ^1.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -38,6 +53,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/girls/
+    - assets/raw/
 
   # fonts:
   #   - family: Schyler
